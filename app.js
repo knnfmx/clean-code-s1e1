@@ -10,6 +10,7 @@ var createNewTaskElement = function(taskString) {
 
   var checkBox = document.createElement('input');
   checkBox.type = 'checkbox';
+  checkBox.className = 'task__checkbox';
 
   var label = document.createElement('label');
   label.className = 'task__label';
@@ -62,10 +63,10 @@ var editTask = function() {
 
   var listItem = this.parentNode;
 
-  var editInput = listItem.querySelector('input[type=text]');
-  var label = listItem.querySelector('label');
+  var editInput = listItem.querySelector('.task__input');
+  var label = listItem.querySelector('.task__label');
   var editBtn = listItem.querySelector('.task__edit-btn');
-  var containsClass = listItem.classList.contains('editMode');
+  var containsClass = listItem.classList.contains('edit-mode');
   //If class of the parent is .editmode
   if(containsClass){
         //switch to .editmode
@@ -78,7 +79,7 @@ var editTask = function() {
   }
 
   //toggle .editmode on the parent.
-  listItem.classList.toggle('editMode');
+  listItem.classList.toggle('edit-mode');
 };
 
 //Delete task.
@@ -124,7 +125,7 @@ addButton.addEventListener('click',ajaxRequest);
 var bindTaskEvents = function(taskListItem,checkBoxEventHandler) {
   console.log('bind list item events');
 
-  var checkBox = taskListItem.querySelector('input[type=checkbox]');
+  var checkBox = taskListItem.querySelector('.task__checkbox');
   var editButton = taskListItem.querySelector('.task__edit-btn');
   var deleteButton = taskListItem.querySelector('.task__del-btn');
 
